@@ -22,5 +22,10 @@ jobs:
         env:
           WEBHOOK_URL: ${{ secrets.WEBHOOK_URL }}
           data: "{'deployment': 'finished', 'project': 'actions'}"
+  dummy-fake:
+    runs-on: ubuntu-latest
+    steps: 
+      - name: Checkout repo
+        uses: actions/checkout@v2
 
       
