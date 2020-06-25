@@ -13,3 +13,13 @@ jobs:
         with:
             name: dummy1
             path: dummy1.txt
+  trigger-cd:
+    needs: test-build-deploy
+    steps: 
+      - name: Webhook
+        uses: joelwmale/webhook-action@master
+        env:
+          WEBHOOK_URL: ${{ secrets.WEBHOOK_URL }}
+          data: "{'deployment': 'finished', 'project': 'actions'}"
+
+      
