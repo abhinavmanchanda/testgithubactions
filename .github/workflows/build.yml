@@ -14,6 +14,7 @@ jobs:
             name: dummy1
             path: dummy1.txt
   trigger-cd:
+    runs-on: ubuntu-latest
     needs: test-build-deploy
     steps: 
       - name: Webhook
