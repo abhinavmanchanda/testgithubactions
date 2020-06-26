@@ -21,11 +21,13 @@ jobs:
         uses: joelwmale/webhook-action@master
         env:
           WEBHOOK_URL: ${{ secrets.WEBHOOK_URL }}
-          data: "{'deployment': 'finished', 'project': 'actions'}"
+          data: "{'deployment': 'finished', 'project': 'actions', 'runid':$GITHUB_RUN_ID}"
   dummy-fake:
     runs-on: ubuntu-latest
     steps: 
       - name: Checkout repo
         uses: actions/checkout@v2
+      - name: Verify run id
+        run : echo Run Id $GITHUB_RUN_ID 
 
       
